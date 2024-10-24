@@ -10,6 +10,7 @@
 //// Example 2:
 //string firstWord = "Hello"; string lastWord = "Example 2"; Console.WriteLine(firstWord + " " + lastWord + "!");
 
+Console.Clear();
 
 Random dice = new Random();
 

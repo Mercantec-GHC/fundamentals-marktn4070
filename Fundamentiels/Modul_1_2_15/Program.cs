@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Xml.Linq;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace MyApplication
@@ -67,37 +68,55 @@ namespace MyApplication
 
         static string Calculate_grade(decimal[] scores)
         {
-            decimal scores_sum = 0;
-            decimal scores_Length = 0;
             decimal scores_average = 0;
+            decimal scores_average_without_extra_credit = 0;
+            decimal scores_average_without_extra_credit_without_decimal = 0;
+            decimal scores_extra_credit_point = 0;
             string grade = "";
-            int normal_amount_of_assignments = 5;
+            string overall_grade = "";
+            decimal normal_num_assignments = 5;
+            decimal scores_sum = 0;
 
-            int count = 0;
-            foreach (decimal score in scores)
+
+
+
+            decimal scores_sum_normal_num_assignments = 0;
+
+            foreach (decimal score in scores.Take((int)normal_num_assignments))
             {
-                count++;
-                if (count <= normal_amount_of_assignments)
-                {
-                    scores_sum += score;
-                }
-                else
-                {
-                    scores_sum += score / 10;
-                }
+                scores_sum_normal_num_assignments += score;
+            }
+            decimal scores_sum_rest = 0;
+            decimal scores_rest_count = 0;
+
+            foreach (decimal score in scores.Skip((int)normal_num_assignments))
+            {
+                scores_rest_count++;
+                scores_sum_rest += score;
             }
 
+            scores_sum = scores_sum_normal_num_assignments + (scores_sum_rest / 10);
 
-            scores_Length = scores.Length;
-            scores_average = Math.Round(scores_sum / scores_Length, 2);
-            grade = scores_average + "\t" + GetGradeLetter(scores_average);
+            scores_extra_credit_point = Math.Round((scores_sum_rest / 10) / normal_num_assignments, 2);
+
+
+            scores_average_without_extra_credit = Math.Round(scores_sum_normal_num_assignments / normal_num_assignments, 1);
+            scores_average_without_extra_credit_without_decimal = Math.Round(scores_sum_rest / scores_rest_count, 0);
+
+            scores_average = Math.Round((scores_sum_normal_num_assignments / normal_num_assignments) + ((scores_sum_rest / 10) / normal_num_assignments), 2);
+
+            overall_grade = scores_average + "\t" + GetGradeLetter(scores_average);
+
+            grade = scores_average_without_extra_credit + "\t\t" + overall_grade + "\t\t" + scores_average_without_extra_credit_without_decimal + " (" + scores_extra_credit_point + " pts)";
             return grade;
         }
 
         static void Main(string[] args)
         {
             string[] names = { "Sophia", "Andrew", "Emma", "Logan" };
+            Console.Clear();
 
+            Console.WriteLine("\n" + "Student" + "\t\t" + "Exam Score" + "\t" + "Overall Grade" + "\t\t" + "Extra Credit" + "\n");
             foreach (string name in names)
             {
                 decimal[] scores;
@@ -118,7 +137,9 @@ namespace MyApplication
                 {
                     scores = new decimal[] { 90, 95, 87, 88, 96, 96 };
                 }
-                Console.WriteLine(name + "\t" + Calculate_grade(scores));
+
+
+                Console.WriteLine(name + "\t\t" + Calculate_grade(scores));
             }
         }
     }
