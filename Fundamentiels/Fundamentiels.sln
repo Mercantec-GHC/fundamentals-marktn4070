@@ -77,7 +77,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul_1_3_18", "Modul_1_3_1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modul_1_3_19", "Modul_1_3_19\Modul_1_3_19.csproj", "{5FE8F268-A782-45A6-B3A9-B56314C68376}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banko", "Banko\Banko.csproj", "{84E61556-A545-4D55-8014-02B098C412B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banko", "Banko\Banko.csproj", "{84E61556-A545-4D55-8014-02B098C412B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bilbasen", "Bilbasen\Bilbasen.csproj", "{6C93B13C-57C0-4E44-A677-BB1E09BC9B40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -229,6 +231,10 @@ Global
 		{84E61556-A545-4D55-8014-02B098C412B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E61556-A545-4D55-8014-02B098C412B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84E61556-A545-4D55-8014-02B098C412B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C93B13C-57C0-4E44-A677-BB1E09BC9B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C93B13C-57C0-4E44-A677-BB1E09BC9B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C93B13C-57C0-4E44-A677-BB1E09BC9B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C93B13C-57C0-4E44-A677-BB1E09BC9B40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
